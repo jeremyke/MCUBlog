@@ -1,0 +1,50 @@
+C51 COMPILER V9.54   NIXIE                                                                 06/18/2023 00:30:41 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE NIXIE
+OBJECT MODULE PLACED IN .\Objects\Nixie.obj
+COMPILER INVOKED BY: D:\Keilv5\C51\BIN\C51.EXE Nixie.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\Nixi
+                    -e.lst) OBJECT(.\Objects\Nixie.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "Delay.h"
+   3          
+   4          #define uchar unsigned char
+   5          
+   6          uchar code numberTable[] ={
+   7                  0x3f,0x06,0x5b,0x4f,
+   8                  0x66,0x6d,0x7d,0x07,
+   9                  0x7f,0x6f};
+  10          uchar code locationTable[] ={
+  11                  0xfe,0xfd,0xfb,0xf7,
+  12                  0xef,0xdf};
+  13          void Nixie(int location,number){                
+  14   1              //阳极控制显示什么数字
+  15   1              P2_6 = 1;//启用U1锁存器跟随状态
+  16   1              P0 = numberTable[number];
+  17   1              P2_6 = 0;//关闭U1锁存器跟随状态
+  18   1              
+  19   1              //阴极控制哪个数码管显示
+  20   1              P0 = locationTable[location];//第三个数码管显示
+  21   1              P2_7 = 1;//确定选位
+  22   1              
+  23   1              //消影
+  24   1              Delay(1);
+  25   1              P0 = 0x00;
+  26   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     45    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
