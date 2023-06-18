@@ -1,0 +1,62 @@
+C51 COMPILER V9.54   MARTRIXKEY                                                            06/18/2023 16:22:15 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MARTRIXKEY
+OBJECT MODULE PLACED IN .\Objects\MartrixKey.obj
+COMPILER INVOKED BY: D:\Keilv5\C51\BIN\C51.EXE MartrixKey.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings
+                    -\MartrixKey.lst) OBJECT(.\Objects\MartrixKey.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "Delay.h"
+   3          
+   4          /**
+   5            * @brief  按下矩阵键盘返回键码
+   6            * @param  无
+   7            * @retval  MartrixKey 按下的矩阵键码值
+   8            */
+   9          unsigned char MartrixKey(){
+  10   1              unsigned char KeyNumber=0;
+  11   1              
+  12   1              P3 = 0xFE;
+  13   1              if(P3_4==0){Delay(20);while(P3_4==0);Delay(20);KeyNumber=6;}
+  14   1              if(P3_5==0){Delay(20);while(P3_5==0);Delay(20);KeyNumber=7;}
+  15   1              if(P3_6==0){Delay(20);while(P3_6==0);Delay(20);KeyNumber=8;}
+  16   1              if(P3_7==0){Delay(20);while(P3_7==0);Delay(20);KeyNumber=9;}
+  17   1      
+  18   1      
+  19   1              P3 = 0xFD;
+  20   1              if(P3_4==0){Delay(20);while(P3_4==0);Delay(20);KeyNumber=10;}
+  21   1              if(P3_5==0){Delay(20);while(P3_5==0);Delay(20);KeyNumber=11;}
+  22   1              if(P3_6==0){Delay(20);while(P3_6==0);Delay(20);KeyNumber=12;}
+  23   1              if(P3_7==0){Delay(20);while(P3_7==0);Delay(20);KeyNumber=13;}
+  24   1              
+  25   1              P3 = 0xFB;
+  26   1              if(P3_4==0){Delay(20);while(P3_4==0);Delay(20);KeyNumber=14;}
+  27   1              if(P3_5==0){Delay(20);while(P3_5==0);Delay(20);KeyNumber=15;}
+  28   1              if(P3_6==0){Delay(20);while(P3_6==0);Delay(20);KeyNumber=16;}
+  29   1              if(P3_7==0){Delay(20);while(P3_7==0);Delay(20);KeyNumber=17;}
+  30   1              
+  31   1              P3 = 0xF7;
+  32   1              if(P3_4==0){Delay(20);while(P3_4==0);Delay(20);KeyNumber=18;}
+  33   1              if(P3_5==0){Delay(20);while(P3_5==0);Delay(20);KeyNumber=19;}
+  34   1              if(P3_6==0){Delay(20);while(P3_6==0);Delay(20);KeyNumber=20;}
+  35   1              if(P3_7==0){Delay(20);while(P3_7==0);Delay(20);KeyNumber=21;}
+  36   1              
+  37   1              return KeyNumber;
+  38   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    385    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
